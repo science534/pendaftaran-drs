@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr.s Registrasi</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #0a0514; 
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- ANIMASI DNA --- */
+        .animation-container {
+            position: relative;
+            width: 200px;
+            height: 250px;
+            perspective: 1000px;
+            margin-top: 10px;
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 220px;
+            height: 220px;
+            border: 2px solid rgba(138, 43, 226, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) rotateX(70deg);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+        }
+
+        .dna {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            transform-style: preserve-3d;
+            animation: rotateDNA 10s linear infinite;
+        }
+
+        .strand {
+            width: 80px;
+            height: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transform-style: preserve-3d;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #bc13fe;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #bc13fe, 0 0 30px #8a2be2;
+        }
+
+        .bridge {
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            flex-grow: 1;
+            margin: 0 5px;
+        }
+
+        @keyframes rotateDNA {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .strand:nth-child(1) { transform: rotateY(0deg); }
+        .strand:nth-child(2) { transform: rotateY(36deg); }
+        .strand:nth-child(3) { transform: rotateY(72deg); }
+        .strand:nth-child(4) { transform: rotateY(108deg); }
+        .strand:nth-child(5) { transform: rotateY(144deg); }
+        .strand:nth-child(6) { transform: rotateY(180deg); }
+        .strand:nth-child(7) { transform: rotateY(216deg); }
+        .strand:nth-child(8) { transform: rotateY(252deg); }
+        .strand:nth-child(9) { transform: rotateY(288deg); }
+        .strand:nth-child(10) { transform: rotateY(324deg); }
+
+        /* --- TEKS --- */
+        .header-text { text-align: center; margin-bottom: 30px; }
+        .header-text h1 { margin: 0; font-size: 2rem; letter-spacing: 5px; text-shadow: 0 0 15px #bc13fe; }
+        .header-text p { margin: 0; font-size: 10px; color: #bc13fe; font-weight: bold; letter-spacing: 2px; }
+
+        /* --- FORM --- */
+        .form-container { width: 100%; max-width: 350px; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 11px; color: #ff3b3b; margin-bottom: 5px; font-weight: bold; }
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%; padding: 10px; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(138, 43, 226, 0.3); border-radius: 5px; color: white; outline: none;
+        }
+
+        .btn-submit {
+            width: 100%; padding: 15px; background: linear-gradient(45deg, #8a2be2, #bc13fe);
+            border: none; border-radius: 5px; color: white; font-weight: bold; cursor: pointer;
+            box-shadow: 0 0 15px rgba(188, 19, 254, 0.4); margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="animation-container">
+        <div class="orbit"></div>
+        <div class="dna">
+            <div class="strand"><div class="dot"></div><div class="bridge"></div><div class="dot"></div></div>
+            <div class="strand"><div class="dot"></div><div class="bridge"></div><div class="dot"></div></div>
+            <div class="strand"><div class="dot"></div><div class="bridge"></div><div class="dot"></div></div>
+            <div class="strand"><div class="dot"></div><div class="bridge"></div><div class="dot"></div></div>
+            <div class="strand"><div class="dot"></div><div class="bridge"></div><div class="dot"></div></div>
+            <div class="strand"><div class="dot"></div><div class="bridge"></div><div class="dot"></div></div>
+            <div class="strand"><div class="dot"></div><div class="bridge"></div><div class="dot"></div></div>
+            <div class="strand"><div class="dot"></div><div class="bridge"></div><div class="dot"></div></div>
+            <div class="strand"><div class="dot"></div><div class="bridge"></div><div class="dot"></div></div>
+            <div class="strand"><div class="dot"></div><div class="bridge"></div><div class="dot"></div></div>
+        </div>
+    </div>
+
+    <div class="header-text">
+        <h1>Dr.s REGISTRASI</h1>
+        <p>MASUK KE SISTEM</p>
+    </div>
+
+    <div class="form-container">
+        <div class="input-group">
+            <label>NAMA LENGKAP</label>
+            <input type="text" id="nama" placeholder="Nama asli...">
+        </div>
+        <div class="input-group">
+            <label>UMUR</label>
+            <input type="number" id="umur" placeholder="Contoh: 18">
+        </div>
+        <div class="input-group">
+            <label>STATUS</label>
+            <select id="status">
+                <option>Pelajar</option>
+                <option>Mahasiswa</option>
+                <option>Umum</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>USERNAME TIKTOK</label>
+            <input type="text" id="tiktok" placeholder="@username">
+        </div>
+        <div class="input-group">
+            <label>ALASAN BERGABUNG</label>
+            <textarea id="alasan" rows="3" placeholder="Tulis alasan..."></textarea>
+        </div>
+
+        <button class="btn-submit" onclick="sendToWA()">KIRIM & BERGABUNG</button>
+    </div>
+
+    <script>
+        function sendToWA() {
+            const nama = document.getElementById('nama').value;
+            const umur = document.getElementById('umur').value;
+            const status = document.getElementById('status').value;
+            const tiktok = document.getElementById('tiktok').value;
+            const alasan = document.getElementById('alasan').value;
+
+            if(!nama || !umur) {
+                alert("Harap isi nama dan umur!");
+                return;
+            }
+
+            // Susun pesan untuk dikirim
+            const pesan = `HALO Dr.s, SAYA INGIN MENDAFTAR:%0A%0A` +
+                          `*Nama:* ${nama}%0A` +
+                          `*Umur:* ${umur}%0A` +
+                          `*Status:* ${status}%0A` +
+                          `*TikTok:* ${tiktok}%0A` +
+                          `*Alasan:* ${alasan}`;
+
+            // Link grup WhatsApp kamu
+            const groupLink = "https://chat.whatsapp.com/IU7eILLSdxz2U4jKyxOgYQ";
+
+            // Karena API WhatsApp tidak bisa langsung post ke grup tanpa admin permission, 
+            // alurnya adalah copy pesan lalu buka link grup.
+            
+            navigator.clipboard.writeText(pesan.replace(/%0A/g, '\n')).then(() => {
+                alert("Data pendaftaran disalin! Silakan klik OK untuk bergabung ke grup dan tempel (paste) pesan Anda di sana.");
+                window.location.href = groupLink;
+            });
+        }
+    </script>
+</body>
+  </html>
